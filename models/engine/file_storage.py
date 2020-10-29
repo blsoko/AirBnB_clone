@@ -2,7 +2,6 @@
 """
 This module defines a FileStorage class
 """
-from models.base_model import BaseModel
 import json
 
 
@@ -30,23 +29,26 @@ class FileStorage():
         """
         serializes __objects to the JSON file (path: __file_path)
         """
-        tojson = {}
-        for key in self.__objects.keys():
-            tojson[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, mode='w', encoding='utf-8') as file_:
-            json.dump(tojson, file_)
-
+        path = type(self).__file_path
+        objects = type(self).__objects
+        obj_to_dict = {}
+        for key, value in objects.items():
+            obj_to_dict[key] = value.to_dict()
+        with open(path, 'w', encoding='utf-8') as my_file:
+            json.dump(obj_to_dict, my_file)
+    
     def reload(self):
+        from models.base_model import BaseModel
         """
         only if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised
         """
+        path_file = type(self).__file_path
         try:
-            path_file = type(self).__file_path
             with open(path_file, mode='r', encoding='utf-8') as myfile:
                 dict_obj = json.load(myfile)
             for key, value in dict_obj.items():
                 myobject = eval(value['__class__'] + '(**value)')
                 type(self).__objects[key] = myobject
-        except Exception:
+        except:
             pass

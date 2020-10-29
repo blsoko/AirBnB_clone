@@ -2,8 +2,8 @@
 """
 Creates a unique FileStorage instance
 """
-from models.engine.file_storage import FileStorage
+from models.engine import file_storage
 
+FileStorage = file_storage.FileStorage
 storage = FileStorage()
 storage.reload()
-print(type(storage))
