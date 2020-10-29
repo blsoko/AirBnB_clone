@@ -4,7 +4,7 @@ This module defines a BaseModel class
 """
 from uuid import uuid4
 from datetime import datetime
-import models
+storage = __import__('__init__')
 
 
 class BaseModel():
@@ -16,10 +16,10 @@ class BaseModel():
         Initializes a BaseModel
         """
         if kwargs:
-            kwargs["created_at"] = datetime.strptime(kwargs["created_at"],
-                                                            "%Y-%m-%dT%H:%M:%S.%f")
-            kwargs["updated_at"] = datetime.strptime(kwargs["updated_at"],
-                                                            "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs["created_at"] = datetime.strptime(
+                kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs["updated_at"] = datetime.strptime(
+                kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
             for key, value in kwargs.items():
                 if key is "__class__":
                     continue
@@ -28,6 +28,7 @@ class BaseModel():
             self.id = str(uuid4())
             self.created_at = datetime.today()
             self.updated_at = self.created_at
+            storage.new()
 
     def __str__(self):
         """
@@ -41,6 +42,7 @@ class BaseModel():
         Updates the public attribute updated_at
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
