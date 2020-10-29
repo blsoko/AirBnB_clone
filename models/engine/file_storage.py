@@ -43,9 +43,9 @@ class FileStorage():
         only if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised
         """
-        path_file = type(self).__file_path
+        from models.base_model import BaseModel
         try:
-            with open(path_file, mode='r', encoding='utf-8') as myfile:
+            with open(self.__file_path, mode='r', encoding='utf-8') as myfile:
                 dict_obj = json.load(myfile)
             for key, value in dict_obj.items():
                 myobject = eval(value['__class__'] + '(**value)')

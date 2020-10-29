@@ -20,7 +20,7 @@ class BaseModel():
                 kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
             kwargs["updated_at"] = datetime.strptime(
                 kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            for key, value in kwargs.items():
+            for key in kwargs.keys():
                 if key is "__class__":
                     continue
                 (self.__dict__)[key] = kwargs[key]
