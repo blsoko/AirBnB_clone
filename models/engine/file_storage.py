@@ -3,10 +3,16 @@
 This module defines a FileStorage class
 """
 import json
+from models.base_model import BaseModel
+
+classes = {
+    "BaseModel": BaseModel
+}
 
 
 class FileStorage():
     """
+    Defines a FileStorage
     """
     __file_path = "file.json"
     __objects = {}
@@ -29,26 +35,21 @@ class FileStorage():
         """
         serializes __objects to the JSON file (path: __file_path)
         """
-        path = type(self).__file_path
-        objects = type(self).__objects
         obj_to_dict = {}
-        for key, value in objects.items():
+        for key, value in type(self).__objects.items():
             obj_to_dict[key] = value.to_dict()
-        with open(path, 'w', encoding='utf-8') as my_file:
-            json.dump(obj_to_dict, my_file)
-    
+        with open(self.__file_path, 'w', encoding='utf-8') as my_file:
+            json.dump(obj_to_dict, my_file, indent="")
+
     def reload(self):
-        from models.base_model import BaseModel
         """
         only if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised
         """
-        from models.base_model import BaseModel
         try:
             with open(self.__file_path, mode='r', encoding='utf-8') as myfile:
                 dict_obj = json.load(myfile)
             for key, value in dict_obj.items():
-                myobject = eval(value['__class__'] + '(**value)')
-                type(self).__objects[key] = myobject
-        except:
+                type(self).__objects[key] = classes[value['__class__']](**value)
+        except Exception:
             pass
