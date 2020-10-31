@@ -12,17 +12,6 @@ from models.place import Place
 from models.review import Review
 
 
-classes = {
-    "BaseModel": BaseModel,
-    "User": User,
-    "State": State,
-    "City": City,
-    "Amenity": Amenity,
-    "Place": Place,
-    "Review": Review
-}
-
-
 class FileStorage():
     """
     Defines a FileStorage
@@ -63,6 +52,6 @@ class FileStorage():
             with open(self.__file_path, mode='r', encoding='utf-8') as myfile:
                 dict_obj = json.load(myfile)
             for key, val in dict_obj.items():
-                type(self).__objects[key] = classes[val['__class__']](**value)
+                FileStorage.__objects[key] = eval(val["__class__"] + "(**val)")
         except Exception:
             pass
