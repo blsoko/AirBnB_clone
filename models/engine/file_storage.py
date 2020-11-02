@@ -12,6 +12,17 @@ from models.place import Place
 from models.review import Review
 
 
+classes = {
+    "BaseModel": BaseModel,
+    "User": User,
+    "State": State,
+    "City": City,
+    "Amenity": Amenity,
+    "Place": Place,
+    "Review": Review
+}
+
+
 class FileStorage():
     """
     Defines a FileStorage
@@ -48,10 +59,12 @@ class FileStorage():
         only if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised
         """
+        path = type(self).__file_path
         try:
-            with open(self.__file_path, mode='r', encoding='utf-8') as myfile:
-                dict_obj = json.load(myfile)
-            for key, val in dict_obj.items():
-                FileStorage.__objects[key] = eval(val["__class__"] + "(**val)")
-        except Exception:
+            with open(path, mode='r', encoding='utf-8') as my_file:
+                objs = json.load(my_file)
+            for key, value in objs.items():
+                obj = eval(value['__class__'] + '(**value)')
+                type(self).__objects[key] = obj
+        except:
             pass
