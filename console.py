@@ -188,8 +188,13 @@ updating attribute"""
                         if (len(split_inside2) <= 3):
                             try:
                                 for i in split_inside2:
-                                    if i[-1] == "\"" and i[0] == "\"":
-                                        n_list.append(i[1:-1])
+                                    if split_inside2[2] == i:
+                                        if  i[-1] == "\"" and i[0] == "\"" :
+                                            n_list.append(i[1:-1])
+                                            continue
+                                        n_list.append(split_inside2[2])
+                                    elif i[-1] == "\"" and i[0] == "\"" :
+                                            n_list.append(i[1:-1])
                                     else:
                                         n_list.append(" ")
                                 for v in range(len(n_list), 3):
