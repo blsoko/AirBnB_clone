@@ -96,6 +96,17 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id by adding or
 updating attribute"""
         args = arg.split()
+        # for i in range(len(arg)):
+        #     if arg[i] == "{" and arg[-1] == "}":
+        #         args = arg[:i].split()
+        #         if args[0] not in self.all().keys():
+        #             print("** class doesn't exist **")
+        #         elif str(args[0]) + "." + str(args[1]) not in storage.all().keys():
+        #             print("** no instance found **")
+        #         else:
+        #             #dictionary[i:] as str
+        #             mydict = arg[i:]
+        #             print(mydict)
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in self.all().keys():
@@ -129,6 +140,64 @@ updating attribute"""
         else:
             del storage.all()[args[0] + '.' + args[1]]
             storage.save()
+        
+    def default(self, arg):
+        """advanced task, default"""
+        args = arg.split(".")
+        if len(args) == 2:
+            if args[0] in self.all().keys():
+                split_methods = args[1].split("(")
+                if len(split_methods) >= 2:
+                    store = storage.all()
+                    try:
+                        if split_methods[1][-1] == ")":
+                            split_methods[1] = split_methods[1][:-1]
+                        else:
+                            return
+                    except:
+                        return
+                    if split_methods[0] == "all":
+                        self.do_all(args[0])
+                    if split_methods[0] == "count":
+                        count = 0
+                        for key, value in store.items():
+                            keys = key.split(".")
+                            if keys[0] == args[0]:
+                                count += 1
+                        print(count)
+                    if split_methods[0] == "show":
+                        self.do_show(args[0] + " " + split_methods[1])
+                    if split_methods[0] == "destroy":
+                        self.do_destroy(args[0] + " " + split_methods[1])
+                    if split_methods[0] == "update":
+                        n_list = []
+                        # try:
+                        #     for i in range(len(split_methods[1])):
+                        #         if (split_methods[1][0] == "\"" and split_methods[1][i] == "\""):
+                        #             n_list.append(split_methods[1][1:i])
+                        #         if (split_methods[1][i] == "{" and split_methods[1][-1] == "}"):
+                        #             n_list.append(split_methods[1][i:-1] + "}")
+                        #             n_list.remove('')
+                        #             self.do_update(args[0] + " " + n_list[0] + " " + n_list[1])
+                        #             return
+                        # except:
+                        #     return
+                        split_inside = split_methods[1].replace(" ", "")
+                        split_inside2 = split_inside.split(",")
+                        n_list = []
+                        if (len(split_inside2) <= 3):
+                            try:
+                                for i in split_inside2:
+                                    if i[-1] == "\"" and i[0] == "\"":
+                                        n_list.append(i[1:-1])
+                                    else:
+                                        n_list.append(" ")
+                                for v in range(len(n_list), 3):
+                                    n_list.append("")
+                                self.do_update(args[0] + " " + n_list[0] +
+                                " " + n_list[1] + " " + n_list[2])
+                            except:
+                                return
 
 
 if __name__ == '__main__':
