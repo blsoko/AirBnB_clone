@@ -16,9 +16,11 @@ class BaseModel():
         Initializes a BaseModel
         """
         if kwargs:
-            kwargs["created_at"] = datetime.strptime(
+            if "created_at" in kwargs and type(kwargs["created_at"]) is str:
+                kwargs["created_at"] = datetime.strptime(
                 kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            kwargs["updated_at"] = datetime.strptime(
+            if "created_at" in kwargs and type(kwargs["created_at"]) is str:
+                kwargs["updated_at"] = datetime.strptime(
                 kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
             for key in kwargs.keys():
                 if key is "__class__":
