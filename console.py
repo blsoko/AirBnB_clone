@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     """
     Defines a HBNBCommand
     """
-    prompt = '(hbtn) '
+    prompt = '(hbnb) '
     __Base_models = {"BaseModel": BaseModel, "User": User, "State": State,
                      "City": City, "Amenity": Amenity, "Place": Place,
                      "Review": Review}
