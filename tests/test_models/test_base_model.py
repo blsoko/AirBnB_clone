@@ -163,8 +163,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(bm1.updated_at, datetime)
         self.assertIsInstance(bm1.name, str)
         self.assertEqual(bm1.name, 'Holberton')
-        self.assertEqual(bm1.created_at.isoformat(), '2017-09-28T21:03:54.052298')
-        self.assertEqual(bm1.updated_at.isoformat(), '2017-09-28T21:03:54.052302')
+        self.assertEqual(
+            bm1.created_at.isoformat(), '2017-09-28T21:03:54.052298')
+        self.assertEqual(
+            bm1.updated_at.isoformat(), '2017-09-28T21:03:54.052302')
 
     def test_new_attributte(self):
         """test to check if new attribute  can be added"""

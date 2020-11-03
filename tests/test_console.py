@@ -10,6 +10,7 @@ from console import HBNBCommand
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
+
 class testCommand(unittest.TestCase):
     """test for command"""
     def test_quit(self):
@@ -128,11 +129,12 @@ class testCommand(unittest.TestCase):
             HBNBCommand().onecmd("update BaseModel {}".format(bmid))
         value = fd.getvalue()
         self.assertEqual(value, "** attribute name missing **\n")
-        
+
         with patch('sys.stdout', new=StringIO()) as fd:
             HBNBCommand().onecmd("update BaseModel {} sadsa ".format(bmid))
         value = fd.getvalue()
         self.assertEqual(value, "** value missing **\n")
+
 
 if __name__ == "__main__":
     unittest.main()

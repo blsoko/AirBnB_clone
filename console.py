@@ -209,6 +209,8 @@ updating attribute"""
                                                n_list[2])
                             except Exception:
                                 return
+        else:
+            print("*** Unknown syntax: {}".format(arg))
 
 
 if __name__ == '__main__':
