@@ -101,7 +101,8 @@ updating attribute"""
         #         args = arg[:i].split()
         #         if args[0] not in self.all().keys():
         #             print("** class doesn't exist **")
-        #         elif str(args[0]) + "." + str(args[1]) not in storage.all().keys():
+        #         elif str(args[0]) + "." + str(args[1]) not in
+        # storage.all().keys():
         #             print("** no instance found **")
         #         else:
         #             #dictionary[i:] as str
@@ -140,7 +141,7 @@ updating attribute"""
         else:
             del storage.all()[args[0] + '.' + args[1]]
             storage.save()
-        
+
     def default(self, arg):
         """advanced task, default"""
         args = arg.split(".")
@@ -154,7 +155,7 @@ updating attribute"""
                             split_methods[1] = split_methods[1][:-1]
                         else:
                             return
-                    except:
+                    except Exception:
                         return
                     if split_methods[0] == "all":
                         self.do_all(args[0])
@@ -173,12 +174,16 @@ updating attribute"""
                         n_list = []
                         # try:
                         #     for i in range(len(split_methods[1])):
-                        #         if (split_methods[1][0] == "\"" and split_methods[1][i] == "\""):
+                        #         if (split_methods[1][0] == "\"" and
+                        # split_methods[1][i] == "\""):
                         #             n_list.append(split_methods[1][1:i])
-                        #         if (split_methods[1][i] == "{" and split_methods[1][-1] == "}"):
-                        #             n_list.append(split_methods[1][i:-1] + "}")
+                        #         if (split_methods[1][i] == "{" and
+                        # split_methods[1][-1] == "}"):
+                        #             n_list.append(split_methods[1][i:-1] + "}
+                        # ")
                         #             n_list.remove('')
-                        #             self.do_update(args[0] + " " + n_list[0] + " " + n_list[1])
+                        #             self.do_update(args[0] + " " + n_list[0]
+                        # + " " + n_list[1])
                         #             return
                         # except:
                         #     return
@@ -189,19 +194,20 @@ updating attribute"""
                             try:
                                 for i in split_inside2:
                                     if split_inside2[2] == i:
-                                        if  i[-1] == "\"" and i[0] == "\"" :
+                                        if i[-1] == "\"" and i[0] == "\"":
                                             n_list.append(i[1:-1])
                                             continue
                                         n_list.append(split_inside2[2])
-                                    elif i[-1] == "\"" and i[0] == "\"" :
-                                            n_list.append(i[1:-1])
+                                    elif i[-1] == "\"" and i[0] == "\"":
+                                        n_list.append(i[1:-1])
                                     else:
                                         n_list.append(" ")
                                 for v in range(len(n_list), 3):
                                     n_list.append("")
                                 self.do_update(args[0] + " " + n_list[0] +
-                                " " + n_list[1] + " " + n_list[2])
-                            except:
+                                               " " + n_list[1] + " " +
+                                               n_list[2])
+                            except Exception:
                                 return
 
 
