@@ -95,14 +95,15 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Updates an instance based on the class name and id by adding or
 updating attribute"""
-        
+
         store = storage.all()
         for i in range(len(arg)):
             if arg[i] == "{" and arg[-1] == "}":
                 args = arg[:i].split()
                 if args[0] not in self.all().keys():
                     print("** class doesn't exist **")
-                elif str(args[0]) + "." + str(args[1]) not in storage.all().keys():
+                elif (str(args[0]) + "." +
+                      str(args[1])) not in storage.all().keys():
                     print("** no instance found **")
                 else:
                     my_dict = eval(arg[i:])
@@ -176,12 +177,16 @@ updating attribute"""
                         n_list = []
                         try:
                             for i in range(len(split_methods[1])):
-                                if (split_methods[1][0] == "\"" and split_methods[1][i] == "\""):
+                                if (split_methods[1][0] == "\"" and
+                                        split_methods[1][i] == "\""):
                                     n_list.append(split_methods[1][1:i])
-                                if (split_methods[1][i] == "{" and split_methods[1][-1] == "}"):
+                                if (split_methods[1][i] == "{" and
+                                        split_methods[1][-1] == "}"):
                                     n_list.append(split_methods[1][i:-1] + "}")
                                     n_list.remove('')
-                                    self.do_update(args[0] + " " + n_list[0] + " " + n_list[1])
+                                    self.do_update(
+                                        args[0] + " " + n_list[0] +
+                                        " " + n_list[1])
                                     return
                         except:
                             return
