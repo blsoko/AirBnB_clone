@@ -19,23 +19,10 @@ class TestFileStorage(unittest.TestCase):
     """
     Unittest for file_storage.py
     """
-    # 1. Crear una instancia de cada modulo: BaseModel, User...
     storage = FileStorage()
     path = storage._FileStorage__file_path
-    #amenity_instance = ""
-    #storage.new(amenity_instance)
     bm_instance = BaseModel(**my_dict)
     storage.new(bm_instance)
-    #city_instance = ""
-    ##storage.new(city_instance)
-    #place_instance = ""
-    #storage.new(place_instance)
-    #review_instance = ""
-    #storage.new(review_instance)
-    #state_instane = ""
-    #storage.new(state_instance)
-    #user_instance = ""
-    #storage.new(user_instance)
 
     def test_module_docstring(self):
         """
@@ -53,8 +40,9 @@ class TestFileStorage(unittest.TestCase):
         methods = inspect.getmembers(FileStorage, predicate=inspect.isfunction)
         for name, func in methods:
             self.assertTrue(len(func.__doc__) > 20)
-    
-    """def test_pep8(self):
+
+        """
+        def test_pep8(self):
         \"""
         Tests for PEP-8
         ""\"
@@ -79,11 +67,11 @@ class TestFileStorage(unittest.TestCase):
         """
         Tests docstring for all methods in TestBaseModel class
         """
-        methods = inspect.getmembers(TestFileStorage, predicate=inspect.ismethod)
+        methods = inspect.getmembers(TestFileStorage,
+                                     predicate=inspect.ismethod)
         for name, func in methods:
             self.assertTrue(len(func.__doc__) > 20)
-        
-    # 2. Guardar esa instancia con el metodo save BaseModel.save ---> FileStorage.__objects
+
     def test_storage_isinstance(self):
         """
         Tests if storage is an instance of FileStorage
@@ -117,8 +105,8 @@ class TestFileStorage(unittest.TestCase):
         key = type(bm2_instance).__name__ + "." + str(bm2_instance.id)
         with open(TestFileStorage.path, mode="r", encoding="utf-8") as f:
             reader = json.load(f)
-        self.assertEqual(reader[key], TestFileStorage.storage.all()[key].to_dict())
+        self.assertEqual(reader[key],
+                         TestFileStorage.storage.all()[key].to_dict())
 
-    # 3. Checkear todo con FileStorage.__objects: guardar en el archivo JSON, cargar desde JSON...
 if __name__ == '__main__':
     pass
