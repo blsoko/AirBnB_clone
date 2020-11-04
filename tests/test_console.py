@@ -135,5 +135,6 @@ class testCommand(unittest.TestCase):
         value = fd.getvalue()
         self.assertEqual(value, "** value missing **\n")
 
+
 if __name__ == "__main__":
     unittest.main()

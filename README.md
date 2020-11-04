@@ -2,8 +2,8 @@
 
 ## Description
 
-    This is the first step of the AirBnB project. The goal of this project is to 
-    recreated the AirBnB Website.The console is a command interpreter to manage 
+    This is the first step of the AirBnB project. The goal of this project is to
+    recreated the AirBnB Website.The console is a command interpreter to manage
     objects for the AirBnb project.
 
 ## Requirements
@@ -20,25 +20,29 @@
 ## Using the console
 
     List of available commands:
-    - quit and EOF: exits the console -> Example: (htbn) quit or (htbn) EOF
-    - help: lists all available commands or the description for a command-> Example: 
-    (htbn) help or (htbn) ? or (htbn) help <command>
-    - create: creates a new instance of a class -> Example: (hbtn) create <class>
-        Available classes:
-            - Amenity
-            - BaseModel
-            - City
-            - Place
-            - Review
-            - State
-            - User
-    - show: prints the string representation of an instance -> Example: (hbtn) show <class> <id>
-        The <id> could be readed from file.json or obtained from the command all
-    - all: prints all string representation of all instances of a class or all instances -> Example: 
-    (htbn) all <class> or (htbn) all
-    - update: updates an instance adding or updating an attribute (only once at time) -> Example: 
-    (htbn) update <class> <id> <attribute_name> <attribute_value>
-    - destroy: deletes an instance -> Example: (htbn) destroy <class> <id>
+    - quit and EOF: exits the console
+        Example: (htbn) quit or (htbn) EOF
+    - help: lists all available commands or the description for a command
+        Example: (htbn) help or (htbn) ? or (htbn) help <command>
+    - create: creates a new instance of a class
+        Example: (hbtn) create <class>
+            Available classes:
+                - Amenity
+                - BaseModel
+                - City
+                - Place
+                - Review
+                - State
+                - User
+    - show: prints the string representation of an instance
+        Example: (hbtn) show <class> <id>
+            The <id> could be readed from file.json or obtained from the command all
+    - all: prints all string representation of all instances of a class or all instances
+        Example: (htbn) all <class> or (htbn) all
+    - update: updates an instance adding or updating an attribute (only once at time)
+        Example: (htbn) update <class> <id> <attribute_name> <attribute_value>
+    - destroy: deletes an instance
+        Example: (htbn) destroy <class> <id>
 
 ## Content
 
