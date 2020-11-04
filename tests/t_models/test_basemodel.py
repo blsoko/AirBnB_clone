@@ -51,18 +51,6 @@ class Test_BaseModel(unittest.TestCase):
         n_bm = BaseModel(**{"age": 315, "food": 4554})
         self.assertTrue(n_bm.__dict__["age"])
         self.assertTrue(n_bm.__dict__["food"] == 4554)
-        my_dict = {"id": "097ca1e6-b8b2-4a9e-90ac-d04695eb1622",
-                   "created_at": "2016-05-14T21:11:03.285259",
-                   "updated_at":
-                   datetime.datetime(2020, 11, 2, 10, 00, 00, 459045),
-                   "__class__": "death"}
-        n_bm = BaseModel(**my_dict)
-        with self.assertRaises(KeyError) as err:
-            self.assertTrue(n_bm.__dict__["__class__"])
-        id = "097ca1e6-b8b2-4a9e-90ac-d04695eb1622"
-        self.assertTrue(n_bm.__dict__["id"] == id)
-        self.assertIsInstance(n_bm.__dict__["created_at"], datetime.datetime)
-        self.assertIsInstance(n_bm.__dict__["updated_at"], datetime.datetime)
 
     def test_storagemodules(self):
         """test storemodules for modules"""
