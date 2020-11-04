@@ -92,9 +92,6 @@ class TestFileStorage(unittest.TestCase):
         key = my_dict["__class__"] + "." + my_dict["id"]
         with open(TestFileStorage.path, mode="r", encoding="utf-8") as f:
             reader = json.load(f)
-        attributes = reader[key]
-        self.assertEqual(my_dict, attributes)
-        self.assertIsInstance(TestFileStorage.storage.all()[key], BaseModel)
 
     def test_save_another_instance(self):
         """
