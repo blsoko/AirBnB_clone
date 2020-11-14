@@ -54,7 +54,7 @@
 
 | File | Description |
 | --- | --- |
-| [__init__.py](./models/__init__.py) | Init for models module. Links base_model and file_storage |
+| [\_\_init__.py](./models/__init__.py) | Init for models module. Links base_model and file_storage |
 | [amenity.py](./models/amenity.py) | Module for Amenity class |
 | [base_model.py](./models/base_model.py) | Module for BaseModel class. All other classes for models module inherit from this one |
 | [city.py](./models/city.py) | Module for City class |
@@ -67,7 +67,7 @@
 
 | File | Description |
 | --- | --- |
-| [__init__.py](./models/engine/__init__.py) | Init for engine module |
+| [\_\_init__.py](./models/engine/__init__.py) | Init for engine module |
 | [file_storage.py](./models/engine/file_storage.py) | Module for FileStorage class. Manages the storage of all objects |
 
 ### Tests directory

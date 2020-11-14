@@ -8,6 +8,7 @@ import os.path
 from models.engine.file_storage import FileStorage, __doc__ as mrdoc
 import inspect
 from models.base_model import BaseModel
+import pep8
 my_dict = {'id': '56d43177-cc5f-4d6c-a0c1-e167f8c27337',
            'created_at': '2017-09-28T21:03:54.052298',
            '__class__': 'BaseModel', 'my_number': 89,
@@ -41,15 +42,19 @@ class TestFileStorage(unittest.TestCase):
         for name, func in methods:
             self.assertTrue(len(func.__doc__) > 20)
 
+<<<<<<< Updated upstream
         """
         def test_pep8(self):
         \"""
+=======
+    def test_pep8(self):
+        """
+>>>>>>> Stashed changes
         Tests for PEP-8
-        ""\"
+        """
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(["models/base_model.py"])
         self.assertEqual(result.total_errors, 0)
-        """
 
     def test_docstring_for_test(self):
         """
@@ -67,8 +72,13 @@ class TestFileStorage(unittest.TestCase):
         """
         Tests docstring for all methods in TestBaseModel class
         """
+<<<<<<< Updated upstream
         methods = inspect.getmembers(TestFileStorage,
                                      predicate=inspect.ismethod)
+=======
+        methods = inspect.getmembers(
+            TestFileStorage, predicate=inspect.ismethod)
+>>>>>>> Stashed changes
         for name, func in methods:
             self.assertTrue(len(func.__doc__) > 20)
 
@@ -102,8 +112,14 @@ class TestFileStorage(unittest.TestCase):
         key = type(bm2_instance).__name__ + "." + str(bm2_instance.id)
         with open(TestFileStorage.path, mode="r", encoding="utf-8") as f:
             reader = json.load(f)
+<<<<<<< Updated upstream
         self.assertEqual(reader[key],
                          TestFileStorage.storage.all()[key].to_dict())
+=======
+        self.assertEqual(
+            reader[key], TestFileStorage.storage.all()[key].to_dict())
+
+>>>>>>> Stashed changes
 
 if __name__ == '__main__':
     pass

@@ -46,6 +46,37 @@
 {
     font-weight: 400;
     font-size: 14px;
-    padding: 0%;
-    margin: 0%;
+    padding-top: 0%;
+    margin-top: 0%;
+    margin-bottom: 16px;
+}
+.filters h2
+{
+    margin-left: -15px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.filters ul
+{
+    list-style-type: none;
+}
+.popover
+{
+    background-color: #FAFAFA;
+    border: #DDDDDD solid 1px;
+    border-radius: 4px;
+    margin-left: -50.333px;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    display: none;
+    position: relative;
+}
+.popover li
+{
+    margin-left: 8.667px;
+    margin-bottom: 6px;
+}
+.locations:hover .popover, .amenities:hover .popover
+{
+    display: block;
 }
